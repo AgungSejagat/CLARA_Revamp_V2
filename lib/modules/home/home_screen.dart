@@ -111,57 +111,82 @@ class _HomeScreenState extends State<HomeScreen> {
                 actions: [
                   TextButton(
                     onPressed: () async {
+                      if (roomName.text.isEmpty &&
+                          deviceId.text.isEmpty &&
+                          deviceName.text.isEmpty) {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text('Error'),
+                                content: Container(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Text('Device tidak ditemukan'),
+                                ),
+                                actions: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            });
+                        return;
+                      }
+
                       final bool isExist = await context
-                      .read<DeviceProvider>()
-                      .checkLampisExist(deviceId.text);
-                  if (!isExist) {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: Text('Error'),
-                          content: Container(
-                            padding: EdgeInsets.all(16.0),
-                            child: Text('Device tidak ditemukan'),
-                          ),
-                          actions: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text('OK'),
-                            ),
-                          ],
+                          .read<DeviceProvider>()
+                          .checkLampisExist(deviceId.text);
+                      if (!isExist) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text('Error'),
+                              content: Container(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text('Device tidak ditemukan'),
+                              ),
+                              actions: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
                         );
-                      },
-                    );
 
-                    roomName.text = '';
-                    deviceName.text = '';
-                    deviceId.text = '';
-                    return;
-                  }
+                        roomName.text = '';
+                        deviceName.text = '';
+                        deviceId.text = '';
+                        return;
+                      }
 
-                  await context.read<RoomProvider>().addRoom(
-                        Room(
-                          id: DateTime.now().microsecond.toString(),
-                          location: roomName.text,
-                        ),
-                      );
+                      await context.read<RoomProvider>().addRoom(
+                            Room(
+                              id: DateTime.now().microsecond.toString(),
+                              location: roomName.text,
+                            ),
+                          );
 
-                  await context.read<DeviceProvider>().addDevice(
-                        Device(
-                          espId: deviceId.text,
-                          name: deviceName.text,
-                          location: roomName.text,
-                        ),
-                      );
+                      await context.read<DeviceProvider>().addDevice(
+                            Device(
+                              espId: deviceId.text,
+                              name: deviceName.text,
+                              location: roomName.text,
+                            ),
+                          );
 
-                  roomName.text = '';
-                  deviceName.text = '';
-                  deviceId.text = '';
+                      roomName.text = '';
+                      deviceName.text = '';
+                      deviceId.text = '';
 
-                  Navigator.pop(context);
+                      Navigator.pop(context);
                     },
                     child: Text('Add'),
                   )

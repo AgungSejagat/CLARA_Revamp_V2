@@ -28,6 +28,8 @@ class RoomScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
+          
+
           return Consumer( //Consumer untuk menerima broadcast dari changenoitifier provider
             builder: (context, DeviceProvider provider, child) { //Broadcast yang hanya diterima oleh consumer adalah deviceprovider
               final devices = provider.devices

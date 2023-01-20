@@ -21,6 +21,10 @@ class LampRepository {
     return Lamp.fromMap(doc.data()!);
   }
 
+  Stream<Lamp>  streamLampById(String id) {
+    return _firestore.collection(_collection).doc(id).snapshots().map((event) => Lamp.fromMap(event.data()!));
+  }
+
   Future<bool> isExist(String id) async { //Mengecek apakah lampu dengan id tertentu ada di firestore
     try {
       bool isExist = false;
