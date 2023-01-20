@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "957434818104",
+    "project_id": "tr-spe",
+    "storage_bucket": "tr-spe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957434818104:android:ebcec5635766e9d1d800cd",
+        "android_client_info": {
+          "package_name": "com.example.flutter_clara_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957434818104-bo6vb5g5gim0a7n67rbuabs6lcn2h75g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ0CfwIOU-ExmnMDoKGG8FpjZ4AQE-TT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957434818104-bo6vb5g5gim0a7n67rbuabs6lcn2h75g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
