@@ -1,9 +1,9 @@
 //File ini untuk mengatur data yang akan ditampilkan di UI
 
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_clara_v1/data/model/device.dart';
 import 'package:flutter_clara_v1/data/model/lamp.dart';
 import 'package:flutter_clara_v1/data/repository/lamp.dart';
@@ -131,8 +131,8 @@ class _DeviceScreenState extends State<DeviceScreen> {
                           elevation: 10,
                           primary: Colors.indigo,
                         ),
-                        child: const Text(
-                          "Change Color",
+                        child: Text(
+                          "device_setting_changecolor".tr(),
                           style: TextStyle(fontSize: 24),
                         ),
                       ),
@@ -159,7 +159,7 @@ class _DeviceScreenState extends State<DeviceScreen> {
                     );
                   })),
                   const Text(
-                    '  Rainbow',
+                    'Rainbow',
                     style: TextStyle(fontSize: 20),
                   ),
                 ],

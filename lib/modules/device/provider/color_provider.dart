@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clara_v1/data/model/lamp.dart';
 import 'package:flutter_clara_v1/data/repository/lamp.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ColorProvider extends ChangeNotifier {
   Color pickColor(BuildContext context, String docId, Color currentColor,
@@ -10,7 +11,7 @@ class ColorProvider extends ChangeNotifier {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Change Color"),
+        title: Text("device_setting_changecolor_head").tr(),
         content: Wrap(
           children: [
             SlidePicker(
@@ -22,7 +23,7 @@ class ColorProvider extends ChangeNotifier {
         ),
         actions: <Widget>[
           ElevatedButton(
-            child: const Text("OK"),
+            child: Text("device_setting_changecolor_confirm").tr(),
             onPressed: () {
               Navigator.of(context).pop();
             },

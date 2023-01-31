@@ -26,7 +26,7 @@ class AddDeviceSheet extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Text(
-          'Tambahkan Ruangan',
+          'greeting_add'.tr(),
           style: TextStyle(fontSize: 24.0),
         ),
         SizedBox(
